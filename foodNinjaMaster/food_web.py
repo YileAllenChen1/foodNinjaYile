@@ -1,0 +1,1 @@
+from foodNinja import foodNinja
