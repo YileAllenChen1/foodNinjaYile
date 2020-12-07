@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe</title>
+  <link rel="icon" type="image/png" href="../static/images/ninjalogo2.png" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='./css/rstyle.css') }}">
+  <!--<link href="../static/css/rstyle.css" rel="stylesheet" />-->
+</head>
+<body style="background-position: center;background-size: 100% 100%;  background-image: url('../static/images/searchresult.jpg');">
+<!-- partial:index.partial.html -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="index" class="w3-bar-item w3-button">Food Ninja</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <script>
+          var on = false;
+          function contrast(){
+            if (!on){
+              document.body.style.backgroundImage = "url('../static/images/contrast_background.jpg')";
+              document.getElementById("table1").style.backgroundColor = "black";
+              document.getElementById("table2").style.backgroundColor = "black";
+              document.getElementById("table3").style.backgroundColor = "black";
+              document.getElementById("head1").style.backgroundColor = "darkgrey";
+              document.getElementById("head2").style.backgroundColor = "darkgrey";
+              document.getElementById("head3").style.backgroundColor = "darkgrey";
+              on = true;
+            } else {
+              document.body.style.backgroundImage = "url('../static/images/searchresult.jpg')";
+              document.getElementById("table1").style.backgroundColor = "white";
+              document.getElementById("table2").style.backgroundColor = "white";
+              document.getElementById("table3").style.backgroundColor = "white";
+              document.getElementById("head1").style.backgroundColor = "#f0f4f2";
+              document.getElementById("head2").style.backgroundColor = "#f0f4f2";
+              document.getElementById("head3").style.backgroundColor = "#f0f4f2";
+              on = false;
+            }
+          }
+        </script>
+        <a href="index" class="w3-bar-item w3-button">Home</a>
+        <a href="about" class="w3-bar-item w3-button">About</a>
+        <!--<a href="#menu" class="w3-bar-item w3-button">Menu</a>-->
+        <a href="contact" class="w3-bar-item w3-button">Contact</a>
+        <button class="w3-bar-item w3-button" style="background-color: rgb(216, 216, 216);" onclick="contrast()">Dark</button>
+        <button class="w3-bar-item w3-button" style="background-color: rgb(216, 216, 216);" onclick="window.print()">Print</button>
+      </div>
+    </div>
+  </div>
+
+
+
+<h2 class="big-heading" style = "margin-top: 100px;">{{recipe_name}}</h2>
+<div id="table1" class="table">
+  <h2  id="head1" class="heading" style="text-align: center;">
+    Recipe Search and Diet
+  </h2>
+  {% for food in food_list %}
+  <div class="block">
+  <p style="color:darkslategray;">{{food['recipe']['label']}} 
+    <br>
+    <span class="time" style="font-size:80%;text-align:end;">
+      {% if 'ENERC_KCAL' in food['recipe']['totalNutrients'] %}
+        Calories: {{"%.1f"|format(food['recipe']['totalNutrients']['ENERC_KCAL']['quantity'])}} {{food['recipe']['totalNutrients']['ENERC_KCAL']['unit']}}<br>
+      {% endif %}
+      {% if 'SUGAR' in food['recipe']['totalNutrients']%}
+        Sugar: {{ "%.1f"|format(food['recipe']['totalNutrients']['SUGAR']['quantity']) }} {{food['recipe']['totalNutrients']['SUGAR']['unit']}}<br>
+      {% endif %}
+      {% if 'FAT' in food['recipe']['totalNutrients'] %}
+        Fat: {{ "%.1f"|format(food['recipe']['totalNutrients']['FAT']['quantity']) }} {{food['recipe']['totalNutrients']['FAT']['unit']}}<br>
+      {% endif %}
+      {% if 'FATRN' in food['recipe']['totalNutrients']%}
+        Trans Fat: {{ "%.1f"|format(food['recipe']['totalNutrients']['FATRN']['quantity']) }} {{food['recipe']['totalNutrients']['FATRN']['unit']}}<br>
+      {% endif %}
+      {% if 'PROCNT' in food['recipe']['totalNutrients']%}
+        Protein: {{ "%.1f"|format(food['recipe']['totalNutrients']['PROCNT']['quantity']) }} {{food['recipe']['totalNutrients']['PROCNT']['unit']}}
+      {% endif %}
+    </span> 
+    <br>
+    <ul class="options">
+      <li style="font-size:medium;">ingredients:</li>
+      <li>
+        {% for i in food['recipe']['ingredients'] %}
+          {{i['text']}}, 
+        {% endfor %}
+      </li>
+      <br>
+      <img src="{{food['recipe']['image']}}" width="200">
+    </ul>
+ </p>
+ <a href="{{food['recipe']['url']}}" target="_blank"><button class="btn">
+  <p>Detailed Recipe</p>
+  <span class="fa fa-cart-plus" aria-hidden="true"></span>
+</button></a>
+</div>
+{% endfor %}
+</div>
+
+<div id="table2" class="table">
+  <h2  id="head2" class="heading" style="text-align: center;">
+    Tasty
+  </h2>
+  {% for i in tasty_food_list %}
+  <div class="block">
+  <p style="color:darkslategray;" >{{i['name']}}
+    <br>
+    <span class="Ratings" style="font-size:80%;text-align:right;">Ratings: {{i['ratings']}}</span> 
+    <br>
+    <span class="Ratings" style="font-size:80%;text-align:right;">Cooking Time: {{i['cook_time']}} minutes</span> 
+    <br>
+    <span class="Ratings" style="font-size:80%;text-align:right;">{{i['serving_size']}}</span> 
+    <br>
+    <ul class="options">
+      <li style="font-size: medium;">ingredients</li>
+      <li>{{i['ingredients']}}</li>
+      <br>
+      <img src="{{i['thumbnail']}}" width="200">
+    </ul>
+ </p>
+ <a href="{{i['href']}}" target="_blank"><button class="btn">
+  <p>Recipe Video</p>
+  <span class="fa fa-cart-plus" aria-hidden="true"></span>
+</button></a>
+</div>
+{% endfor %}
+</div>
+
+<div id="table3" class="table">
+  <h2  id="head3" class="heading" style="text-align: center;">
+    Yummly
+  </h2>
+  {% for i in yummly_food_list %}
+  <div class="block">
+  <p style="color:darkslategray;">{{i['name']}}
+    <br>
+    <span class="time" style="font-size:80%;text-align:end;">Cooking time: {{i['time']}}</span> 
+    <br>
+    <span class="Ratings" style="font-size:80%;text-align:right;">Ratings: {{i['ratings']}}</span> 
+    <br>  
+    <ul class="options">
+      <li style="font-size: medium;">ingredients</li>
+      <li>{{i['ingredients']}}</li>
+      <br>
+      <img src="{{i['image']}}" width="200">
+    </ul>
+ </p>
+ <a href="{{i['href']}}" target="_blank"><button class="btn">
+  <p>Detailed Recipe</p>
+  <span class="fa fa-cart-plus" aria-hidden="true"></span>
+</button></a>
+</div>
+{% endfor %}
+</div>
+
+<h4>Food Recipes</h4>
+<!-- partial -->
+  
+</body>
+</html>

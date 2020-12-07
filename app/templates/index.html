@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>Food Ninja</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/png" href="../static/images/ninjalogo2.png" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!--<link href="../static/css/main.css" rel="stylesheet" />-->
+    <style>
+
+  .abc:hover 
+  {
+      background-color: #d9d9d9;
+      -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius: 15px;
+  }
+  .tab
+  {
+      display: inline-block; 
+      margin-left: 20px;
+  }
+    </style>
+
+
+  </head>
+  <body>
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">  <!--background: rgba(255, 255, 255, 0.3)">-->
+      <a href="index" class="w3-bar-item w3-button">Food Ninja</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="index" class="w3-bar-item w3-button">Home</a>
+        <a href="about" class="w3-bar-item w3-button">About</a>
+        <!--<a href="#menu" class="w3-bar-item w3-button">Menu</a>-->
+        <a href="contact" class="w3-bar-item w3-button">Contact</a>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="s130">
+      <form method="POST">
+        <div style="text-align: center;"><img src="../static/images/ninjalogo2.png" width="150" height="100" ></div>
+        <h1 style="text-align:right">FoodNinja</h1>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
+            </div>
+            <input name="input_text" id="search" type="text" placeholder="What are you looking for?" />
+          </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search" type="submit">SEARCH</button>
+          </div>
+        </div>       
+        <span class = "tab"></span>
+
+
+        <div style = "line-height: 0.6">
+          <span class = "tab"></span>
+          
+          <input class="btn-search abc w3-round-xxlarge" name = "hamburger" type="submit" value = "Hamburger"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "fried chicken" type="submit" value = "Fried chicken"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "pasta" type="submit" value = "Pasta"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "tenders" type="submit" value = "Tenders"></input>
+        </div>
+
+        <div style = "line-height: 0.6">
+          <br>
+          <span class = "tab"></span>
+          <input class="btn-search abc w3-round-xxlarge" name = "chicken" type="submit" value = "Chicken"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "turkey" type="submit" value = "Turkey"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "shrimp" type="submit" value = "Shrimp"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "salmon" type="submit" value = "Salmon"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "seafood" type="submit" value = "Seafood"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "beef" type="submit" value = "Beef"></input>
+        </div>
+
+        
+        <div style = "line-height: 0.6">
+          <br>
+          <span class = "tab"></span>
+          <input class="btn-search abc w3-round-xxlarge" name = "pie" type="submit" value = "Pie"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "cookies" type="submit" value = "Cookies"></input>
+          <input class="btn-search abc w3-round-xxlarge" name = "cheesecake" type="submit" value = "Cheesecake"></input>
+        </div>
+
+
+      </form>
+    </div>
+    <script src="js/extention/choices.js"></script>
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
