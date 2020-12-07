@@ -10,10 +10,11 @@ FoodNinja is a website that allows user to search up recipes. It searches the re
 
 <h3 align="center">Search Page</h3>
 
-![Search Page](examples/search_page.jpg?raw=true "Title")
+![Search Page](examples/search_page.jpg)
 
 <h3 align="center">Results Page</h3>
 
-![Search Page](examples/results_page.jpg?raw=true "Title")
+![Results Page](examples/results_page.jpg)
 
-***I would like to thank my teammates Kyle Hsu, Zichen Li and Sixing Zheng for working as a team and delivering a succesfull product!***
+---
+*I would like to thank my teammates Kyle Hsu, Zichen Li and Sixing Zheng for working as a team and delivering a succesfull product!*
